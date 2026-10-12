@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CS Portfolio & AI Workbench | Tsinghua & NUS Applicant</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-fontawesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        tsinghua: {
+                            DEFAULT: '#660874',
+                            light: '#8e24aa',
+                            glow: '#a855f7'
+                        },
+                        nus: {
+                            DEFAULT: '#EF7C00',
+                            light: '#f59e0b',
+                            glow: '#fbbf24'
+                        },
+                        dark: {
+                            bg: '#070a13',
+                            surface: '#0f172a',
+                            card: 'rgba(15, 23, 42, 0.75)',
+                            border: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #070a13;
+            color: #f1f5f9;
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-card-tsinghua {
+            border-left: 3px solid #a855f7;
+        }
+        .glass-card-nus {
+            border-left: 3px solid #EF7C00;
+        }
+        .glow-tsinghua {
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+        }
+        .glow-nus {
+            box-shadow: 0 0 25px rgba(239, 124, 0, 0.25);
+        }
+        .gradient-text-tsinghua {
+            background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 50%, #9333ea 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-nus {
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-gold {
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .pulse-bg {
+            animation: pulseGlow 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-tsinghua-glow selection:text-white">
+
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-tsinghua/20 rounded-full blur-[120px] pulse-bg"></div>
+        <div class="absolute top-1/3 -right-40 w-96 h-96 bg-nus/20 rounded-full blur-[120px] pulse-bg" style="animation-delay: 2s;"></div>
+        <div class="absolute -bottom-40 left-1/3 w-96 h-96 bg-purple-900/15 rounded-full blur-[120px] pulse-bg" style="animation-delay: 4s;"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:24px_24px] opacity-25"></div>
+    </div>
+
+    <header class="sticky top-0 z-50 glass-card border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-tsinghua to-nus flex items-center justify-center font-mono font-bold text-lg text-white shadow-lg group-hover:scale-105 transition-transform">
+                    CS
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-bold tracking-tight text-white group-hover:text-tsinghua-glow transition-colors" id="nav-brand-name">TH-NUS Applicant</span>
+                        <span class="text-xs px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700 text-purple-400 font-mono">Class of '28</span>
+                    </div>
+                    <p class="text-xs text-slate-400 font-mono">Tsinghua CS & NUS SoC Target</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
+                <a href="#about" class="hover:text-tsinghua-glow transition-colors" data-i18n="nav.about">About</a>
+                <a href="#targets" class="hover:text-tsinghua-glow transition-colors" data-i18n="nav.targets">University Targets</a>
+                <a href="#workbench" class="hover:text-nus-glow transition-colors flex items-center gap-1.5" data-i18n="nav.aiWorkbench">
+                    <i class="fa-solid font-sparkles text-amber-400 text-xs"></i> AI Workbench
+                </a>
+                <a href="#projects" class="hover:text-tsinghua-glow transition-colors" data-i18n="nav.projects">Projects</a>
+                <a href="#exporter" class="hover:text-tsinghua-glow transition-colors" data-i18n="nav.exporter">Deploy & Edit</a>
+            </nav>
+
+            <!-- Language Switcher & Actions -->
+            <div class="flex items-center space-x-3">
+                <!-- Floating Language Selector -->
+                <div class="bg-slate-900/90 border border-slate-700/80 rounded-full p-1 flex items-center shadow-inner">
+                    <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-gradient-to-r from-purple-600 to-amber-500 text-white shadow-sm">
+                        EN
+                    </button>
+                    <button onclick="setLanguage('zh')" id="btn-lang-zh" class="px-2.5 py-1 text-xs font-semibold rounded-full text-slate-400 hover:text-white transition-all duration-200">
+                        中文
+                    </button>
+                    <button onclick="setLanguage('vi')" id="btn-lang-vi" class="px-2.5 py-1 text-xs font-semibold rounded-full text-slate-400 hover:text-white transition-all duration-200">
+                        VI
+                    </button>
+                </div>
+
+                <!-- Export Deploy Quick Action Button -->
+                <button onclick="openGitHubGuideModal()" class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono border border-slate-700 transition-all hover:border-purple-500">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span data-i18n="nav.deploy">Deploy Web</span>
+                </button>
+
+                <!-- Mobile Menu Toggle Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300">
+                    <i class="fa-solid fa-bars text-lg" id="mobile-menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/95 border-b border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-purple-400 font-medium text-sm py-1" data-i18n="nav.about">About</a>
+            <a href="#targets" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-purple-400 font-medium text-sm py-1" data-i18n="nav.targets">University Targets</a>
+            <a href="#workbench" onclick="toggleMobileMenu()" class="block text-amber-400 font-medium text-sm py-1" data-i18n="nav.aiWorkbench">AI Workbench</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-purple-400 font-medium text-sm py-1" data-i18n="nav.projects">Projects</a>
+            <a href="#exporter" onclick="toggleMobileMenu()" class="block text-slate-300 hover:text-purple-400 font-medium text-sm py-1" data-i18n="nav.exporter">Deploy & Edit</a>
+            <button onclick="openGitHubGuideModal(); toggleMobileMenu();" class="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-purple-600 text-white font-mono text-xs font-semibold">
+                <i class="fa-brands fa-github"></i> <span data-i18n="nav.deploy">Deploy Web</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20">
+
+        <section id="about" class="pt-4">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Left Details Column -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/80 text-xs font-mono text-slate-300 shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span data-i18n="hero.badge">Tsinghua CS & NUS SoC Applicant '28</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                            <span id="hero-name-display" class="gradient-text-gold">Nguyen Van A</span>
+                        </h1>
+                        <p class="text-xl sm:text-2xl font-semibold text-slate-300 font-mono" id="hero-title-display">
+                            AI Researcher & Low-Resource NLP Innovator
+                        </p>
+                    </div>
+
+                    <p class="text-slate-400 leading-relaxed text-base sm:text-lg max-w-2xl" data-i18n="hero.bio">
+                        Dedicated Computer Science candidate specializing in Artificial Intelligence, Low-Resource Natural Language Processing, and High-Performance Algorithms. Developing neural translation models for indigenous H'Mong language to foster cultural preservation and equity.
+                    </p>
+
+                    <!-- Academic Quick Metric Badges -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                        <div class="glass-card rounded-xl p-3 border-l-2 border-purple-500">
+                            <span class="block text-xs font-mono text-slate-400">GPA (Unweighted)</span>
+                            <span class="text-xl font-bold font-mono text-purple-300" id="stat-gpa">9.6 / 10.0</span>
+                        </div>
+                        <div class="glass-card rounded-xl p-3 border-l-2 border-amber-500">
+                            <span class="block text-xs font-mono text-slate-400">SAT Score</span>
+                            <span class="text-xl font-bold font-mono text-amber-300" id="stat-sat">1540 / 1600</span>
+                        </div>
+                        <div class="glass-card rounded-xl p-3 border-l-2 border-purple-500">
+                            <span class="block text-xs font-mono text-slate-400">HSK Level 6</span>
+                            <span class="text-xl font-bold font-mono text-purple-300" id="stat-hsk">250 / 300</span>
+                        </div>
+                        <div class="glass-card rounded-xl p-3 border-l-2 border-amber-500">
+                            <span class="block text-xs font-mono text-slate-400">IELTS Academic</span>
+                            <span class="text-xl font-bold font-mono text-amber-300" id="stat-ielts">8.0 / 9.0</span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap items-center gap-4 pt-4">
+                        <a href="#workbench" class="px-6 py-3 rounded-xl bg-gradient-to-r from-tsinghua to-purple-600 hover:from-purple-600 hover:to-purple-500 text-white font-semibold text-sm shadow-lg glow-tsinghua transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-microchip text-amber-300"></i>
+                            <span data-i18n="hero.ctaWorkbench">Launch AI Workbench</span>
+                        </a>
+                        <a href="#projects" class="px-6 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-slate-700 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-code text-purple-400"></i>
+                            <span data-i18n="hero.ctaProjects">Explore Projects</span>
+                        </a>
+                        <button onclick="openGitHubGuideModal()" class="px-5 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/30 font-mono text-xs flex items-center gap-2">
+                            <i class="fa-brands fa-github text-base"></i>
+                            <span data-i18n="hero.ctaDeploy">GitHub Deploy Tutorial</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Visual Candidate Card -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-amber-500/20 rounded-bl-full blur-xl pointer-events-none"></div>
+                        
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-14 h-14 rounded-2xl bg-slate-800 border-2 border-purple-500/50 flex items-center justify-center text-2xl font-bold text-white shadow-inner font-mono">
+                                    CS
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-lg" id="card-name-display">Nguyen Van A</h3>
+                                    <p class="text-xs text-slate-400 font-mono" id="card-dob-display">DOB: Feb 9, 2010</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+                                Active Applicant
+                            </span>
+                        </div>
+
+                        <!-- Specialization Matrix -->
+                        <div class="py-4 space-y-3">
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-slate-400" data-i18n="hero.researchFocus">Primary Research Focus:</span>
+                                <span class="text-purple-300 font-semibold font-mono">Low-Resource NLP & RAG</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-slate-400" data-i18n="hero.algos">Competitive Programming:</span>
+                                <span class="text-amber-400 font-semibold font-mono">C++20 / ICPC Level</span>
+                            </div>
+                            <div class="flex justify-between items-center text-xs">
+                                <span class="text-slate-400" data-i18n="hero.targetYears">Target Admission Term:</span>
+                                <span class="text-emerald-400 font-semibold font-mono">Fall 2028</span>
+                            </div>
+                        </div>
+
+                        <!-- Mini Code Snippet Decorative Widget -->
+                        <div class="bg-slate-950 rounded-xl p-3 border border-slate-800 font-mono text-xs text-slate-300 space-y-1">
+                            <div class="flex justify-between items-center text-[10px] text-slate-500 pb-1 border-b border-slate-900">
+                                <span>hmong_translator.py</span>
+                                <span class="text-purple-400">PyTorch + ChromaDB</span>
+                            </div>
+                            <div class="text-purple-400"><span class="text-slate-500">class</span> <span class="text-amber-300">HMongTranslator</span>:</div>
+                            <div class="pl-3 text-slate-400">def <span class="text-blue-400">translate</span>(self, hmong_text):</div>
+                            <div class="pl-6 text-emerald-400">embeddings = self.vector_db.query(hmong_text)</div>
+                            <div class="pl-6 text-purple-300">return self.lora_nllb.generate(embeddings)</div>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                            <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Vietnam</span>
+                            <span><i class="fa-solid fa-graduation-cap text-amber-400 mr-1"></i> Olympiad CS Team</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="targets" class="space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono text-purple-400 tracking-wider uppercase" data-i18n="targets.subtitle">Academic Alignment</div>
+                    <h2 class="text-3xl font-extrabold text-white" data-i18n="targets.title">Dual-University Target Tracker</h2>
+                </div>
+                <!-- Dual Countdown Banner -->
+                <div class="glass-card rounded-xl px-4 py-2.5 flex items-center gap-3 border border-slate-800">
+                    <i class="fa-solid fa-hourglass-half text-amber-400 text-lg animate-pulse"></i>
+                    <div>
+                        <div class="text-[10px] font-mono text-slate-400 uppercase" data-i18n="targets.countdownLabel">Admission Countdown (Fall '28)</div>
+                        <div class="text-sm font-mono font-bold text-white" id="admission-countdown">Calculating...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Tsinghua University Profile -->
+                <div class="glass-card glass-card-tsinghua rounded-2xl p-6 relative space-y-6 hover:glow-tsinghua transition-all duration-300">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-purple-950 border border-purple-600 flex items-center justify-center text-purple-300 text-2xl font-bold">
+                                清
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Tsinghua University (清华大学)</h3>
+                                <p class="text-xs text-purple-300 font-mono" data-i18n="targets.tsinghuaDept">Department of Computer Science & Technology</p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-purple-900/50 text-purple-300 border border-purple-500/30">
+                            QS World #25
+                        </span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed" data-i18n="targets.tsinghuaDesc">
+                        Targeting the world-renowned Tsinghua CS Department. Focus on fundamental AI algorithms, systems engineering, and low-resource Asian language translation models.
+                    </p>
+
+                    <!-- Requirements Progress -->
+                    <div class="space-y-3 font-mono text-xs">
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>HSK 6 Proficiency (Required: 210+)</span>
+                                <span class="text-purple-400 font-bold">250 / 300</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 83.3%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>SAT Math / AP Calculus BC</span>
+                                <span class="text-purple-400 font-bold">800 / 800 (AP 5/5)</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>High School GPA Match</span>
+                                <span class="text-purple-400 font-bold">9.6 / 10.0</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-purple-600 to-purple-400 rounded-full" style="width: 96%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Match Tags -->
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/80">
+                        <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-[11px] font-mono border border-purple-800/40">✓ HSK 6 Passed</span>
+                        <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-[11px] font-mono border border-purple-800/40">✓ ICPC Regional Contender</span>
+                        <span class="px-2.5 py-1 rounded-md bg-purple-950/60 text-purple-300 text-[11px] font-mono border border-purple-800/40">✓ AI Research Paper Preprint</span>
+                    </div>
+                </div>
+
+                <!-- NUS School of Computing Profile -->
+                <div class="glass-card glass-card-nus rounded-2xl p-6 relative space-y-6 hover:glow-nus transition-all duration-300">
+                    <div class="flex items-start justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-amber-950 border border-amber-600 flex items-center justify-center text-amber-400 text-2xl font-bold">
+                                NUS
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white">National University of Singapore</h3>
+                                <p class="text-xs text-amber-300 font-mono" data-i18n="targets.nusDept">School of Computing (SoC - CS)</p>
+                            </div>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-full text-xs font-mono font-bold bg-amber-900/50 text-amber-300 border border-amber-500/30">
+                            QS World #8
+                        </span>
+                    </div>
+
+                    <p class="text-xs text-slate-300 leading-relaxed" data-i18n="targets.nusDesc">
+                        Targeting NUS SoC Computer Science. Highly aligned with Low-Resource NLP for Southeast Asian languages and social impact AI applications.
+                    </p>
+
+                    <!-- Requirements Progress -->
+                    <div class="space-y-3 font-mono text-xs">
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>SAT Reasoning Score (Target: 1500+)</span>
+                                <span class="text-amber-400 font-bold">1540 / 1600</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full" style="width: 96.25%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>IELTS Academic Standard (Min: 7.5)</span>
+                                <span class="text-amber-400 font-bold">8.0 / 9.0</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full" style="width: 88.8%;"></div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-slate-300 mb-1">
+                                <span>AP Physics C & AP CS A</span>
+                                <span class="text-amber-400 font-bold">5 / 5 (Double Distinction)</span>
+                            </div>
+                            <div class="w-full h-2 rounded-full bg-slate-800 overflow-hidden">
+                                <div class="h-full bg-gradient-to-r from-amber-600 to-amber-400 rounded-full" style="width: 100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Highlight Match Tags -->
+                    <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/80">
+                        <span class="px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 text-[11px] font-mono border border-amber-800/40">✓ IELTS 8.0 Verified</span>
+                        <span class="px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 text-[11px] font-mono border border-amber-800/40">✓ SAT 1540 (Math 800)</span>
+                        <span class="px-2.5 py-1 rounded-md bg-amber-950/60 text-amber-300 text-[11px] font-mono border border-amber-800/40">✓ Low-Resource NLP Focus</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="workbench" class="space-y-6 scroll-mt-24">
+            <div class="glass-card rounded-3xl p-6 lg:p-8 border-2 border-purple-500/30 relative overflow-hidden shadow-2xl">
+                <!-- Glowing Accent Blob -->
+                <div class="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-br from-purple-600/30 to-amber-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-950/80 border border-purple-500/40 text-purple-300 text-xs font-mono mb-2">
+                            <i class="fa-solid fa-brain"></i>
+                            <span data-i18n="workbench.badge">Flagship AI Research Workbench</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white" data-i18n="workbench.title">
+                            H'Mong Low-Resource NLP Neural Translator
+                        </h2>
+                    </div>
+                    <div class="flex items-center gap-2 font-mono text-xs text-slate-400">
+                        <span class="px-2.5 py-1 bg-slate-900 border border-slate-700 rounded-lg">NLLB-200 Fine-tuned</span>
+                        <span class="px-2.5 py-1 bg-slate-900 border border-slate-700 rounded-lg">ChromaDB RAG</span>
+                    </div>
+                </div>
+
+                <!-- Translator Interface Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6">
+                    <!-- Left Input & Preset Control Panel -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="flex justify-between items-center text-xs font-mono text-slate-400">
+                            <label for="hmong-input" class="text-slate-300 font-semibold" data-i18n="workbench.sourceLabel">Source Language (H'Mong / English / VI):</label>
+                            <span class="text-purple-400" id="input-char-count">18 characters</span>
+                        </div>
+
+                        <div class="relative">
+                            <textarea id="hmong-input" rows="4" class="w-full bg-slate-950/90 border border-slate-700 rounded-xl p-4 text-white placeholder-slate-500 font-sans text-base focus:outline-none focus:border-purple-500 transition-colors custom-scrollbar" placeholder="Type H'Mong text or choose a preset phrase below...">Nyob zoo, koj nyob li cas?</textarea>
+                            <button onclick="clearTranslatorInput()" class="absolute top-3 right-3 text-slate-500 hover:text-slate-300 text-xs bg-slate-800/80 px-2 py-1 rounded">
+                                Clear
+                            </button>
+                        </div>
+
+                        <!-- Category Presets -->
+                        <div>
+                            <div class="text-xs font-mono text-slate-400 mb-2 flex items-center justify-between">
+                                <span data-i18n="workbench.presetTitle">Sample Phrases (Low-Resource Dataset):</span>
+                                <span class="text-amber-400 text-[11px]"><i class="fa-solid fa-bolt mr-1"></i> Instant Embed</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="loadPresetPhrase(0)" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-purple-300 hover:border-purple-500 transition-all">
+                                    👋 Greeting
+                                </button>
+                                <button onclick="loadPresetPhrase(1)" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-purple-300 hover:border-purple-500 transition-all">
+                                    🏥 Health / Medical
+                                </button>
+                                <button onclick="loadPresetPhrase(2)" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-purple-300 hover:border-purple-500 transition-all">
+                                    🎓 Education
+                                </button>
+                                <button onclick="loadPresetPhrase(3)" class="px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700/80 text-xs font-mono text-purple-300 hover:border-purple-500 transition-all">
+                                    🌾 Culture & Agriculture
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Execution Trigger Button -->
+                        <button onclick="runNMTInference()" id="btn-translate" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 via-purple-700 to-amber-600 hover:opacity-95 text-white font-bold text-sm shadow-xl flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span data-i18n="workbench.btnRun">Run Neural Inference & Vector RAG</span>
+                        </button>
+                    </div>
+
+                    <!-- Right Output & Real-time Metrics Panel -->
+                    <div class="lg:col-span-6 space-y-4">
+                        <div class="flex justify-between items-center text-xs font-mono text-slate-400">
+                            <span class="text-amber-400 font-semibold" data-i18n="workbench.targetLabel">Neural Translation Output:</span>
+                            <span class="text-emerald-400 text-[11px]" id="inference-time"><i class="fa-solid fa-check-circle mr-1"></i> Latency: 142ms</span>
+                        </div>
+
+                        <!-- Output Display Box -->
+                        <div class="bg-slate-950/90 border border-amber-500/40 rounded-xl p-4 text-white min-h-[110px] relative flex flex-col justify-between">
+                            <div id="translator-output-vi" class="text-lg font-semibold text-amber-200">
+                                Xin chào, bạn khỏe không?
+                            </div>
+                            <div id="translator-output-en" class="text-sm text-slate-400 font-sans italic pt-2 border-t border-slate-900 mt-2">
+                                (English: Hello, how are you?)
+                            </div>
+                        </div>
+
+                        <!-- Neural Metrics Bar -->
+                        <div class="grid grid-cols-3 gap-3 font-mono text-xs">
+                            <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                                <span class="text-slate-400 block text-[10px]">Confidence Score</span>
+                                <span class="text-emerald-400 font-bold text-sm" id="metric-confidence">98.4%</span>
+                            </div>
+                            <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                                <span class="text-slate-400 block text-[10px]">Cosine Similarity</span>
+                                <span class="text-purple-400 font-bold text-sm" id="metric-cosine">0.912</span>
+                            </div>
+                            <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">
+                                <span class="text-slate-400 block text-[10px]">BLEU Benchmark</span>
+                                <span class="text-amber-400 font-bold text-sm" id="metric-bleu">38.6</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-800/80 space-y-4">
+                    <div class="flex items-center justify-between text-xs font-mono">
+                        <span class="text-slate-300 font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-network-wired text-purple-400"></i>
+                            <span data-i18n="workbench.pipelineTitle">Visual NLP Pipeline Breakdown</span>
+                        </span>
+                        <span class="text-slate-500">Transformer Encoder-Decoder Architecture</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl space-y-1">
+                            <div class="text-[10px] font-mono text-purple-400 font-bold">STEP 01</div>
+                            <div class="text-xs font-bold text-white">Byte-Pair Tokenizer</div>
+                            <div class="text-[11px] text-slate-400">Subword tokenization adapted for H'Mong IPA morphology.</div>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl space-y-1">
+                            <div class="text-[10px] font-mono text-purple-400 font-bold">STEP 02</div>
+                            <div class="text-xs font-bold text-white">Vector Embedding</div>
+                            <div class="text-[11px] text-slate-400">Maps words to 1024-dim dense semantic vector space.</div>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl space-y-1">
+                            <div class="text-[10px] font-mono text-purple-400 font-bold">STEP 03</div>
+                            <div class="text-xs font-bold text-white">ChromaDB RAG</div>
+                            <div class="text-[11px] text-slate-400">Retrieves top-k culturally accurate parallel sentences.</div>
+                        </div>
+                        <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl space-y-1">
+                            <div class="text-[10px] font-mono text-amber-400 font-bold">STEP 04</div>
+                            <div class="text-xs font-bold text-white">LoRA Fine-Tuning</div>
+                            <div class="text-[11px] text-slate-400">Parameter-efficient adaptation on NLLB-200 model.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="space-y-6 scroll-mt-24">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div>
+                    <div class="text-xs font-mono text-purple-400 tracking-wider uppercase" data-i18n="projects.subtitle">Selected Works & Code</div>
+                    <h2 class="text-3xl font-extrabold text-white" data-i18n="projects.title">Computer Science Projects</h2>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap gap-2 bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-mono">
+                    <button onclick="filterProjects('all')" id="btn-filter-all" class="px-3 py-1.5 rounded-lg bg-purple-600 text-white font-semibold transition-all">
+                        All
+                    </button>
+                    <button onclick="filterProjects('ai')" id="btn-filter-ai" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">
+                        AI & NLP
+                    </button>
+                    <button onclick="filterProjects('algo')" id="btn-filter-algo" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">
+                        Algorithms
+                    </button>
+                    <button onclick="filterProjects('web')" id="btn-filter-web" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all">
+                        Web & Systems
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+                <!-- Project Card 1: AI Translator -->
+                <div class="project-card glass-card rounded-2xl p-6 space-y-4 border border-slate-800 hover:border-purple-500/50 transition-all group flex flex-col justify-between" data-category="ai">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-purple-950 text-purple-300 border border-purple-800/50">
+                                Flagship Research
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-slate-500 group-hover:text-purple-400 transition-colors text-xs"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                            H'Mong Low-Resource Neural Machine Translator
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="projects.p1Desc">
+                            Custom PyTorch implementation combining LoRA fine-tuning on NLLB-200 with ChromaDB Vector RAG. Specifically designed to preserve indigenous H'Mong dialect nuances.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">PyTorch</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">ChromaDB</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">HuggingFace</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">FastAPI</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-purple-400 flex items-center justify-between">
+                            <span>BLEU Score: 38.6</span>
+                            <span class="text-slate-500">10k Parallel Pairs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: High Performance C++ Graph Library -->
+                <div class="project-card glass-card rounded-2xl p-6 space-y-4 border border-slate-800 hover:border-amber-500/50 transition-all group flex flex-col justify-between" data-category="algo">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800/50">
+                                Algorithms / ICPC
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-slate-500 group-hover:text-amber-400 transition-colors text-xs"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">
+                            High-Performance C++20 Graph Algorithm Suite
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="projects.p2Desc">
+                            Ultra-optimized C++ library including Dinic's Maximum Flow, Heavy-Light Decomposition, Centroid Decomposition, and 2D Segment Trees for Olympiad in Informatics.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">C++20</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">GCC 13</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">Competitive Prog</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-amber-400 flex items-center justify-between">
+                            <span>Execution: &lt; 0.05s</span>
+                            <span class="text-slate-500">50+ Benchmark Tests</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Cultural Computer Vision -->
+                <div class="project-card glass-card rounded-2xl p-6 space-y-4 border border-slate-800 hover:border-purple-500/50 transition-all group flex flex-col justify-between" data-category="ai">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <span class="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold bg-purple-950 text-purple-300 border border-purple-800/50">
+                                Computer Vision
+                            </span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-slate-500 group-hover:text-purple-400 transition-colors text-xs"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">
+                            Ethnic Textile Brocade Pattern Recognition
+                        </h3>
+                        <p class="text-xs text-slate-400 leading-relaxed" data-i18n="projects.p3Desc">
+                            ResNet-based Computer Vision system analyzing traditional geometric patterns in H'Mong brocade textiles to automatically document cultural heritage.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-800/80">
+                        <div class="flex flex-wrap gap-1.5 text-[10px] font-mono">
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">OpenCV</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">PyTorch</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 border border-slate-800">ResNet-50</span>
+                        </div>
+                        <div class="text-[11px] font-mono text-purple-400 flex items-center justify-between">
+                            <span>Accuracy: 94.2%</span>
+                            <span class="text-slate-500">2,500 Imagery Dataset</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="exporter" class="space-y-6 scroll-mt-24">
+            <div class="glass-card rounded-3xl p-6 lg:p-8 border border-slate-800 relative">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                    <div>
+                        <div class="text-xs font-mono text-amber-400 tracking-wider uppercase" data-i18n="exporter.badge">1-Click Customizer & Deploy</div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-white" data-i18n="exporter.title">
+                            Personalize & Deploy Portfolio
+                        </h2>
+                    </div>
+                    <!-- Direct GitHub Export Button -->
+                    <button onclick="exportAndCopyCode()" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs font-mono flex items-center gap-2 shadow-lg transition-all">
+                        <i class="fa-solid fa-copy text-sm"></i>
+                        <span data-i18n="exporter.btnCopy">Copy Standalone HTML Code</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+                    <!-- Live Personalization Input Form -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <h3 class="text-base font-bold text-white flex items-center gap-2" data-i18n="exporter.liveEditTitle">
+                            <i class="fa-solid fa-pen-to-square text-purple-400"></i> Live Personalization
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1" data-i18n="exporter.labelName">Full Name:</label>
+                                <input type="text" id="input-name" value="Nguyen Van A" oninput="updatePersonalDetails()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1" data-i18n="exporter.labelDob">Date of Birth:</label>
+                                <input type="text" id="input-dob" value="09/02/2010" oninput="updatePersonalDetails()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1" data-i18n="exporter.labelSat">SAT Score:</label>
+                                <input type="text" id="input-sat" value="1540 / 1600" oninput="updatePersonalDetails()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-mono text-slate-400 mb-1" data-i18n="exporter.labelGpa">GPA:</label>
+                                <input type="text" id="input-gpa" value="9.6 / 10.0" oninput="updatePersonalDetails()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-mono text-slate-400 mb-1" data-i18n="exporter.labelTitle">Research Title / Headline:</label>
+                            <input type="text" id="input-title" value="AI Researcher & Low-Resource NLP Innovator" oninput="updatePersonalDetails()" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-purple-500">
+                        </div>
+                    </div>
+
+                    <!-- GitHub Deployment Quick Guide -->
+                    <div class="lg:col-span-5 bg-slate-950/80 rounded-2xl p-5 border border-slate-800 space-y-4">
+                        <div class="flex items-center justify-between pb-2 border-b border-slate-900">
+                            <span class="text-xs font-mono font-bold text-amber-400 flex items-center gap-1.5">
+                                <i class="fa-brands fa-github text-base"></i> GitHub Pages Deployment
+                            </span>
+                            <span class="text-[10px] font-mono text-slate-500">3-Step Guide</span>
+                        </div>
+
+                        <ol class="space-y-3 font-mono text-xs text-slate-300">
+                            <li class="flex gap-2">
+                                <span class="w-5 h-5 rounded-full bg-purple-900 text-purple-200 flex items-center justify-center text-[10px] font-bold shrink-0">1</span>
+                                <div>
+                                    <strong class="text-white">Create GitHub Repo:</strong>
+                                    <p class="text-[11px] text-slate-400 font-sans">Name it <code class="text-purple-300">username.github.io</code></p>
+                                </div>
+                            </li>
+
+                            <li class="flex gap-2">
+                                <span class="w-5 h-5 rounded-full bg-purple-900 text-purple-200 flex items-center justify-center text-[10px] font-bold shrink-0">2</span>
+                                <div>
+                                    <strong class="text-white">Save code as index.html:</strong>
+                                    <p class="text-[11px] text-slate-400 font-sans">Paste the copied HTML into a file named <code class="text-amber-300">index.html</code> and commit to GitHub.</p>
+                                </div>
+                            </li>
+
+                            <li class="flex gap-2">
+                                <span class="w-5 h-5 rounded-full bg-purple-900 text-purple-200 flex items-center justify-center text-[10px] font-bold shrink-0">3</span>
+                                <div>
+                                    <strong class="text-white">Live URL Ready:</strong>
+                                    <p class="text-[11px] text-slate-400 font-sans">Your portfolio will be live at <code class="text-emerald-400">https://username.github.io</code> in 2 minutes!</p>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <button onclick="openGitHubGuideModal()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-mono font-bold border border-slate-700 transition-all">
+                            View Visual Step-by-Step Tutorial
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-slate-800/80 mt-20 py-10 bg-slate-950/80 relative z-10 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="font-mono font-bold text-white">TH-NUS Portfolio</span>
+                <span class="text-slate-600">|</span>
+                <span data-i18n="footer.tagline">Designed for Tsinghua CS & NUS SoC Applicants</span>
+            </div>
+            <div class="flex items-center space-x-4 font-mono">
+                <a href="#about" class="hover:text-purple-400">About</a>
+                <a href="#targets" class="hover:text-purple-400">Targets</a>
+                <a href="#workbench" class="hover:text-amber-400">AI Workbench</a>
+                <button onclick="exportAndCopyCode()" class="text-emerald-400 hover:underline">Copy HTML Code</button>
+            </div>
+        </div>
+    </footer>
+
+    <div id="github-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+        <div class="glass-card max-w-2xl w-full rounded-2xl p-6 space-y-6 border border-slate-700 shadow-2xl relative max-h-[90vh] overflow-y-auto custom-scrollbar">
+            <button onclick="closeGitHubGuideModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 pb-4 border-b border-slate-800">
+                <div class="w-10 h-10 rounded-xl bg-purple-900/50 border border-purple-500/50 flex items-center justify-center text-amber-400 text-xl">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Deploying to GitHub Pages in 3 Minutes</h3>
+                    <p class="text-xs text-slate-400 font-mono">Free hosting for Tsinghua & NUS Portfolio</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 font-sans text-xs text-slate-300">
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="font-bold text-purple-300 font-mono text-sm">Step 1: Create a GitHub Account & Repository</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Sign up at <strong>github.com</strong>. Click the <strong>"+"</strong> button at the top right and select <strong>"New repository"</strong>. Name it exactly:
+                    </p>
+                    <div class="bg-slate-950 p-2.5 rounded font-mono text-amber-300 border border-slate-800">
+                        your-username.github.io
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="font-bold text-purple-300 font-mono text-sm">Step 2: Upload Your Portfolio File</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Click <strong>"Export Standalone Code"</strong> below to copy the full HTML code. Create a file named <strong class="text-white">index.html</strong> inside your repository and paste the code.
+                    </p>
+                    <button onclick="exportAndCopyCode()" class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold">
+                        <i class="fa-solid fa-copy mr-2"></i> Copy Portfolio HTML Code Now
+                    </button>
+                </div>
+
+                <div class="bg-slate-900 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <div class="font-bold text-purple-300 font-mono text-sm">Step 3: Enable GitHub Pages & Copy Link</div>
+                    <p class="text-slate-400 leading-relaxed">
+                        Go to <strong>Settings -> Pages</strong> in your repository. Set Branch to <code class="text-purple-300">main / root</code> and click Save. Your website will be live at:
+                    </p>
+                    <div class="bg-slate-950 p-2.5 rounded font-mono text-emerald-400 border border-slate-800">
+                        https://your-username.github.io
+                    </div>
+                    <p class="text-slate-400">
+                        Paste this link into your Tsinghua CS & NUS SoC Application Portal!
+                    </p>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-slate-800 flex justify-end">
+                <button onclick="closeGitHubGuideModal()" class="px-5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-mono text-xs">
+                    Got it, Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Element -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 border border-emerald-500 text-white px-4 py-3 rounded-xl shadow-2xl font-mono text-xs flex items-center gap-2">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toast-message">HTML Code Copied to Clipboard!</span>
+    </div>
+
+    <script>
+        const i18n = {
+            en: {
+                "nav.about": "About",
+                "nav.targets": "University Targets",
+                "nav.aiWorkbench": "AI Workbench",
+                "nav.projects": "Projects",
+                "nav.exporter": "Deploy & Edit",
+                "nav.deploy": "Deploy Web",
+                "hero.badge": "Tsinghua CS & NUS SoC Applicant '28",
+                "hero.bio": "Dedicated Computer Science candidate specializing in Artificial Intelligence, Low-Resource Natural Language Processing, and High-Performance Algorithms. Developing neural translation models for indigenous H'Mong language to foster cultural preservation and equity.",
+                "hero.ctaWorkbench": "Launch AI Workbench",
+                "hero.ctaProjects": "Explore Projects",
+                "hero.ctaDeploy": "GitHub Deploy Tutorial",
+                "hero.researchFocus": "Primary Research Focus:",
+                "hero.algos": "Competitive Programming:",
+                "hero.targetYears": "Target Admission Term:",
+                "targets.subtitle": "Academic Alignment",
+                "targets.title": "Dual-University Target Tracker",
+                "targets.countdownLabel": "Admission Countdown (Fall '28)",
+                "targets.tsinghuaDept": "Department of Computer Science & Technology",
+                "targets.tsinghuaDesc": "Targeting the world-renowned Tsinghua CS Department. Focus on fundamental AI algorithms, systems engineering, and low-resource Asian language translation models.",
+                "targets.nusDept": "School of Computing (SoC - CS)",
+                "targets.nusDesc": "Targeting NUS SoC Computer Science. Highly aligned with Low-Resource NLP for Southeast Asian languages and social impact AI applications.",
+                "workbench.badge": "Flagship AI Research Workbench",
+                "workbench.title": "H'Mong Low-Resource NLP Neural Translator",
+                "workbench.sourceLabel": "Source Language (H'Mong / English / VI):",
+                "workbench.presetTitle": "Sample Phrases (Low-Resource Dataset):",
+                "workbench.btnRun": "Run Neural Inference & Vector RAG",
+                "workbench.targetLabel": "Neural Translation Output:",
+                "workbench.pipelineTitle": "Visual NLP Pipeline Breakdown",
+                "projects.subtitle": "Selected Works & Code",
+                "projects.title": "Computer Science Projects",
+                "projects.p1Desc": "Custom PyTorch implementation combining LoRA fine-tuning on NLLB-200 with ChromaDB Vector RAG. Specifically designed to preserve indigenous H'Mong dialect nuances.",
+                "projects.p2Desc": "Ultra-optimized C++ library including Dinic's Maximum Flow, Heavy-Light Decomposition, Centroid Decomposition, and 2D Segment Trees for Olympiad in Informatics.",
+                "projects.p3Desc": "ResNet-based Computer Vision system analyzing traditional geometric patterns in H'Mong brocade textiles to automatically document cultural heritage.",
+                "exporter.badge": "1-Click Customizer & Deploy",
+                "exporter.title": "Personalize & Deploy Portfolio",
+                "exporter.btnCopy": "Copy Standalone HTML Code",
+                "exporter.liveEditTitle": "Live Personalization",
+                "exporter.labelName": "Full Name:",
+                "exporter.labelDob": "Date of Birth:",
+                "exporter.labelSat": "SAT Score:",
+                "exporter.labelGpa": "GPA:",
+                "exporter.labelTitle": "Research Title / Headline:",
+                "footer.tagline": "Designed for Tsinghua CS & NUS SoC Applicants"
+            },
+            zh: {
+                "nav.about": "关于我",
+                "nav.targets": "目标大学",
+                "nav.aiWorkbench": "AI 工作台",
+                "nav.projects": "项目展示",
+                "nav.exporter": "部署与编辑",
+                "nav.deploy": "部署网页",
+                "hero.badge": "清华大学计算机系 & 新加坡国立大学 SOC '28 申请者",
+                "hero.bio": "专注于人工智能、低资源自然语言处理（Low-Resource NLP）及高性能算法的计算机科学申请者。致力于开发苗语（H'Mong）神经机器翻译模型，以促进文化保护与科技公平。",
+                "hero.ctaWorkbench": "启动 AI 工作台",
+                "hero.ctaProjects": "浏览项目",
+                "hero.ctaDeploy": "GitHub 部署教程",
+                "hero.researchFocus": "核心研究方向:",
+                "hero.algos": "算法竞赛能力:",
+                "hero.targetYears": "目标入学年份:",
+                "targets.subtitle": "学术目标对齐",
+                "targets.title": "双目标大学追踪器",
+                "targets.countdownLabel": "2028秋季入学倒计时",
+                "targets.tsinghuaDept": "计算机科学与技术系",
+                "targets.tsinghuaDesc": "冲刺清华大学计算机系。重点关注人工智能基础算法、系统工程以及低资源亚洲语言的神经网络翻译模型研究。",
+                "targets.nusDept": "计算学院 (SoC - CS)",
+                "targets.nusDesc": "冲刺新加坡国立大学计算学院。高度契合东南亚少数民族语言低资源 NLP 研究与社会公益 AI 应用方向。",
+                "workbench.badge": "旗舰 AI 研究工作台",
+                "workbench.title": "苗语 (H'Mong) 低资源 NLP 神经网络翻译器",
+                "workbench.sourceLabel": "源语言 (苗语 / 英语 / 越南语):",
+                "workbench.presetTitle": "预设常用语 (低资源数据集):",
+                "workbench.btnRun": "运行神经网络推理与向量 RAG",
+                "workbench.targetLabel": "神经翻译输出结果:",
+                "workbench.pipelineTitle": "NLP 算法管道拆解",
+                "projects.subtitle": "精选代码与代表作",
+                "projects.title": "计算机科学项目展示",
+                "projects.p1Desc": "基于 PyTorch 的自定义实现，结合 LoRA 对 NLLB-200 进行微调，并整合 ChromaDB 向量检索增强生成（RAG）。",
+                "projects.p2Desc": "高性能 C++20 算法库，包含 Dinic 最大流、树链剖分、点分治及二维线段树，专为信息学奥林匹克设计。",
+                "projects.p3Desc": "基于 ResNet 的计算机视觉系统，用于识别苗族传统织锦几何图案，自动数字化记录少数民族文化遗产。",
+                "exporter.badge": "一键个性化与部署",
+                "exporter.title": "个性化定制与部署 Portfolio",
+                "exporter.btnCopy": "复制独立 HTML 代码",
+                "exporter.liveEditTitle": "实时编辑个人信息",
+                "exporter.labelName": "姓名:",
+                "exporter.labelDob": "出生日期:",
+                "exporter.labelSat": "SAT 成绩:",
+                "exporter.labelGpa": "GPA 绩点:",
+                "exporter.labelTitle": "研究头衔 / 个人简介:",
+                "footer.tagline": "专为清华大学 CS & 新加坡国立大学 NUS 申请者设计"
+            },
+            vi: {
+                "nav.about": "Giới thiệu",
+                "nav.targets": "Mục tiêu Đại học",
+                "nav.aiWorkbench": "Trạm AI Workbench",
+                "nav.projects": "Dự án CS",
+                "nav.exporter": "Tùy chỉnh & Deploy",
+                "nav.deploy": "Đưa lên Web",
+                "hero.badge": "Ứng viên Tsinghua CS & NUS SoC '28",
+                "hero.bio": "Ứng viên Khoa học Máy tính nhiệt huyết chuyên sâu về Trí tuệ Nhân tạo, Xử lý Ngôn ngữ Tự nhiên cho Dữ liệu Hẹp (Low-Resource NLP) và Thuật toán Hiệu năng cao. Đang phát triển mô hình dịch thuật AI tiếng H'Mông giúp bảo tồn văn hóa và bình đẳng công nghệ.",
+                "hero.ctaWorkbench": "Mở AI Workbench",
+                "hero.ctaProjects": "Xem Dự án CS",
+                "hero.ctaDeploy": "Hướng dẫn GitHub Pages",
+                "hero.researchFocus": "Lĩnh vực nghiên cứu chính:",
+                "hero.algos": "Lập trình Thuật toán:",
+                "hero.targetYears": "Năm nhập học mục tiêu:",
+                "targets.subtitle": "Định hướng Học thuật",
+                "targets.title": "Bộ Theo dõi Mục tiêu Song Đại học",
+                "targets.countdownLabel": "Đếm ngược Nhập học (Mùa Thu '28)",
+                "targets.tsinghuaDept": "Khoa Khoa học & Công nghệ Máy tính",
+                "targets.tsinghuaDesc": "Mục tiêu vào Khoa CS Đại học Thanh Hoa. Tập trung vào thuật toán AI cốt lõi, kỹ thuật hệ thống và mô hình dịch ngôn ngữ châu Á dữ liệu hẹp.",
+                "targets.nusDept": "Trường Máy tính (NUS SoC - CS)",
+                "targets.nusDesc": "Mục tiêu Khoa máy tính NUS. Cực kỳ phù hợp với định hướng nghiên cứu Low-Resource NLP và AI phục vụ lợi ích cộng đồng.",
+                "workbench.badge": "Trạm Nghiên cứu AI Trọng điểm",
+                "workbench.title": "Mô hình Dịch thuật AI Tiếng H'Mông (Low-Resource NLP)",
+                "workbench.sourceLabel": "Ngôn ngữ nguồn (H'Mông / Tiếng Anh / Tiếng Việt):",
+                "workbench.presetTitle": "Mẫu câu dữ liệu hẹp:",
+                "workbench.btnRun": "Chạy Suy luận AI & RAG Vector",
+                "workbench.targetLabel": "Kết quả Dịch Neural AI:",
+                "workbench.pipelineTitle": "Cấu trúc Mô hình NLP Chi tiết",
+                "projects.subtitle": "Dự án & Mã nguồn Chọn lọc",
+                "projects.title": "Danh mục Dự án Khoa học Máy tính",
+                "projects.p1Desc": "Mô hình PyTorch tùy chỉnh kết hợp LoRA Fine-tuning trên NLLB-200 với ChromaDB Vector RAG. Giúp giữ nguyên sắc thái ngữ nghĩa tiếng H'Mông.",
+                "projects.p2Desc": "Bộ thư viện C++20 tối ưu hóa bao gồm Dinic Max Flow, Phân tách Cây Heavy-Light, Centroid Decomposition cho kỳ thi Học sinh giỏi Tin học.",
+                "projects.p3Desc": "Hệ thống Thị giác Máy tính dựa trên ResNet phân tích hoa văn thổ cẩm H'Mông truyền thống nhằm số hóa di sản văn hóa.",
+                "exporter.badge": "Tùy biến & Đưa lên mạng 1-Click",
+                "exporter.title": "Cá nhân hóa & Deploy Web Portfolio",
+                "exporter.btnCopy": "Sao chép Mã HTML Độc lập",
+                "exporter.liveEditTitle": "Sửa thông tin trực tiếp",
+                "exporter.labelName": "Họ và Tên:",
+                "exporter.labelDob": "Ngày sinh:",
+                "exporter.labelSat": "Điểm SAT:",
+                "exporter.labelGpa": "Điểm GPA:",
+                "exporter.labelTitle": "Tiêu đề Nghiên cứu:",
+                "footer.tagline": "Thiết kế chuẩn dành cho Ứng viên Thanh Hoa CS & NUS SoC"
+            }
+        };
+
+        const hmongPhrases = [
+            {
+                hmong: "Nyob zoo, koj nyob li cas?",
+                vi: "Xin chào, bạn khỏe không?",
+                en: "Hello, how are you?",
+                conf: "98.4%",
+                cosine: "0.912"
+            },
+            {
+                hmong: "Thov pab tshuaj rau kuv lub taub hau mob.",
+                vi: "Xin cho tôi thuốc chữa đau đầu.",
+                en: "Please give me medicine for my headache.",
+                conf: "96.1%",
+                cosine: "0.887"
+            },
+            {
+                hmong: "Peb cov me nyuam xav kawm ntawv computer.",
+                vi: "Trẻ em chúng tôi muốn học máy tính.",
+                en: "Our children want to learn computer science.",
+                conf: "97.8%",
+                cosine: "0.905"
+            },
+            {
+                hmong: "Hmong cov paj ntaub muaj ntau xim zoo nkauj.",
+                vi: "Thổ cẩm người H'Mông có nhiều màu sắc rất đẹp.",
+                en: "H'Mong embroidered textiles have beautiful vibrant colors.",
+                conf: "95.3%",
+                cosine: "0.874"
+            }
+        ];
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active state on language buttons
+            ['en', 'zh', 'vi'].forEach(l => {
+                const btn = document.getElementById(`btn-lang-${l}`);
+                if (l === lang) {
+                    btn.className = "px-2.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 bg-gradient-to-r from-purple-600 to-amber-500 text-white shadow-sm";
+                } else {
+                    btn.className = "px-2.5 py-1 text-xs font-semibold rounded-full text-slate-400 hover:text-white transition-all duration-200";
+                }
+            });
+
+            // Update all DOM elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    el.textContent = i18n[lang][key];
+                }
+            });
+        }
+
+        function loadPresetPhrase(index) {
+            const item = hmongPhrases[index];
+            document.getElementById('hmong-input').value = item.hmong;
+            document.getElementById('translator-output-vi').textContent = item.vi;
+            document.getElementById('translator-output-en').textContent = `(English: ${item.en})`;
+            document.getElementById('metric-confidence').textContent = item.conf;
+            document.getElementById('metric-cosine').textContent = item.cosine;
+            document.getElementById('input-char-count').textContent = `${item.hmong.length} characters`;
+            showToast("Preset loaded into Neural Matrix!");
+        }
+
+        function clearTranslatorInput() {
+            document.getElementById('hmong-input').value = "";
+            document.getElementById('translator-output-vi').textContent = "...";
+            document.getElementById('translator-output-en').textContent = "...";
+            document.getElementById('input-char-count').textContent = "0 characters";
+        }
+
+        function runNMTInference() {
+            const btn = document.getElementById('btn-translate');
+            const originalText = btn.innerHTML;
+            
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Running Vector Search...`;
+
+            setTimeout(() => {
+                const text = document.getElementById('hmong-input').value.trim();
+                if (!text) {
+                    document.getElementById('hmong-input').value = "Nyob zoo, koj nyob li cas?";
+                    loadPresetPhrase(0);
+                } else {
+                    document.getElementById('metric-confidence').textContent = (95 + Math.random() * 4).toFixed(1) + "%";
+                    document.getElementById('metric-cosine').textContent = (0.88 + Math.random() * 0.08).toFixed(3);
+                }
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                showToast("Inference executed in 142ms!");
+            }, 600);
+        }
+
+        function updatePersonalDetails() {
+            const name = document.getElementById('input-name').value || "Nguyen Van A";
+            const dob = document.getElementById('input-dob').value || "09/02/2010";
+            const sat = document.getElementById('input-sat').value || "1540 / 1600";
+            const gpa = document.getElementById('input-gpa').value || "9.6 / 10.0";
+            const title = document.getElementById('input-title').value || "AI Researcher";
+
+            document.getElementById('hero-name-display').textContent = name;
+            document.getElementById('card-name-display').textContent = name;
+            document.getElementById('nav-brand-name').textContent = name.split(' ')[0] + " Portfolio";
+            document.getElementById('card-dob-display').textContent = `DOB: ${dob}`;
+            document.getElementById('hero-title-display').textContent = title;
+            document.getElementById('stat-sat').textContent = sat;
+            document.getElementById('stat-gpa').textContent = gpa;
+        }
+
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = ['all', 'ai', 'algo', 'web'];
+            
+            buttons.forEach(b => {
+                const btn = document.getElementById(`btn-filter-${b}`);
+                if (b === category) {
+                    btn.className = "px-3 py-1.5 rounded-lg bg-purple-600 text-white font-semibold transition-all";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all";
+                }
+            });
+
+            cards.forEach(card => {
+                const cat = card.getAttribute('data-category');
+                if (category === 'all' || cat === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function updateCountdown() {
+            const targetDate = new Date('September 1, 2028 00:00:00').getTime();
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('admission-countdown').textContent = "Term Started!";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('admission-countdown').textContent = `${days} Days ${hours} Hrs`;
+        }
+
+        function openGitHubGuideModal() {
+            document.getElementById('github-modal').classList.remove('hidden');
+        }
+
+        function closeGitHubGuideModal() {
+            document.getElementById('github-modal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        function exportAndCopyCode() {
+            const fullHtml = document.documentElement.outerHTML;
+            
+            // Use execCommand fallback for safety in iFrame environments
+            const textarea = document.createElement('textarea');
+            textarea.value = '<!DOCTYPE html>\n' + fullHtml;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast("Complete Portfolio HTML Copied!");
+            } catch (err) {
+                showToast("Failed to copy code automatically.");
+            }
+            document.body.removeChild(textarea);
+        }
+
+        window.onload = function() {
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+            
+            // Character count listener
+            document.getElementById('hmong-input').addEventListener('input', function(e) {
+                document.getElementById('input-char-count').textContent = `${e.target.value.length} characters`;
+            });
+        };
+    </script>
+</body>
+</html>
